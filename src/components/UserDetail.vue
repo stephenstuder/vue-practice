@@ -10,20 +10,26 @@
 </template>
 
 <script>
+import { eventBus } from "../main";
 export default {
   props: {
-    name: String,
+    myName: String,
     resetFn: Function,
     userAge: Number,
   },
   methods: {
     switchName() {
-      return this.name.split("").reverse().join("");
+      return this.myName.split("").reverse().join("");
     },
     resetName() {
       this.name = "Stephen";
-      this.$emit("nameWasReset", this.name);
+      this.$emit(`nameWasReset`, this.userName);
     },
+  },
+  created() {
+    eventBus.$on("ageWasEdited", (age) => {
+      this.userAge = age;
+    });
   },
 };
 </script>
