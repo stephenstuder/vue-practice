@@ -10,6 +10,8 @@
         <ul>
           <li v-for="fruit in filteredFruits" :key="fruit.id">{{fruit}}</li>
         </ul>
+        <hr />
+        <app-list></app-list>
       </div>
     </div>
   </div>
@@ -18,12 +20,12 @@
 // filter is used in instances where you want to change the display of data without actually changing the data
 
 <script>
+import List from "./List.vue";
+import { fruitMixin } from "./fruitMixin.js";
 export default {
   data() {
     return {
       text: "Hello There!",
-      fruits: ["apple", "banana", "mango", "melon"],
-      filterText: "",
     };
   },
   filters: {
@@ -31,12 +33,9 @@ export default {
       return value.toUpperCase();
     },
   },
-  computed: {
-    filteredFruits() {
-      return this.fruits.filter((element) => {
-        return element.match(this.filterText);
-      });
-    },
+  mixins: [fruitMixin],
+  components: {
+    appList: List,
   },
 };
 </script>
