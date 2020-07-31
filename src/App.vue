@@ -18,7 +18,7 @@
 </template>
 
 // filter is used in instances where you want to change the display of data without actually changing the data
-
+// component always has the last word, mixin is executed first
 <script>
 import List from "./List.vue";
 import { fruitMixin } from "./fruitMixin.js";
