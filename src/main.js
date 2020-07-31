@@ -1,17 +1,7 @@
-import Vue from "vue";
-import App from "./App.vue";
-
-Vue.filter("toLowerCase", (value) => {
-  return value.toLowerCase();
-});
-
-Vue.mixin({
-  created() {
-    console.log("Global mixin created hook");
-  },
-});
+import Vue from 'vue'
+import App from './App.vue'
 
 new Vue({
-  el: "#app",
-  render: (h) => h(App),
-});
+  el: '#app',
+  render: h => h(App)
+})
