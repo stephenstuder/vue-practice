@@ -82,10 +82,10 @@ export default {
       console.log("leave");
       done();
     },
-    afterLeave(element) {
+    afterLeave(el) {
       console.log("afterLeave");
     },
-    leaveCancelled(element) {
+    leaveCancelled(el) {
       console.log("leaveCancelled");
     },
   },
