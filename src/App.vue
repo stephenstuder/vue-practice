@@ -33,6 +33,7 @@
           @leave="leave"
           @after-leave="afterLeave"
           @leave-cancelled="leaveCancelled"
+          :css="false"
         >
           <div style="width: 100px; height: 100px; background-color: lightgreen" v-if="load"></div>
         </transition>
@@ -48,27 +49,36 @@ export default {
       show: false,
       load: true,
       alertAnimation: "fade",
+      elementWidth: 100,
     };
   },
   methods: {
-    beforeEnter(element) {
+    beforeEnter(el) {
       console.log("beforeEnter");
     },
 
-    enter(element, done) {
+    enter(el, done) {
       console.log("enter");
-      done();
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.width = this.elementWidth + round * 10 + "px";
+        round++;
+        if (round > 20) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
     },
-    afterEnter(element) {
+    afterEnter(el) {
       console.log("afterEnter");
     },
-    enterCancelled(element) {
+    enterCancelled(el) {
       console.log("enterCancelled");
     },
-    beforeLeave(element) {
+    beforeLeave(el) {
       console.log("beforeLeave");
     },
-    leave(element, done) {
+    leave(el, done) {
       console.log("leave");
       done();
     },
