@@ -29,6 +29,10 @@
           @enter="enter"
           @after-enter="afterEnter"
           @enter-cancelled="enterCancelled"
+          @before-leave="beforeLeave"
+          @leave="leave"
+          @after-leave="afterLeave"
+          @leave-cancelled="leaveCancelled"
         >
           <div style="width: 100px; height: 100px; background-color: lightgreen" v-if="load"></div>
         </transition>
@@ -45,6 +49,35 @@ export default {
       load: true,
       alertAnimation: "fade",
     };
+  },
+  methods: {
+    beforeEnter(element) {
+      console.log("beforeEnter");
+    },
+
+    enter(element, done) {
+      console.log("enter");
+      done();
+    },
+    afterEnter(element) {
+      console.log("afterEnter");
+    },
+    enterCancelled(element) {
+      console.log("enterCancelled");
+    },
+    beforeLeave(element) {
+      console.log("beforeLeave");
+    },
+    leave(element, done) {
+      console.log("leave");
+      done();
+    },
+    afterLeave(element) {
+      console.log("afterLeave");
+    },
+    leaveCancelled(element) {
+      console.log("leaveCancelled");
+    },
   },
 };
 </script>
